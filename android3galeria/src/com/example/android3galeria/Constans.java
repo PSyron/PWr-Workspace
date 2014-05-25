@@ -12,8 +12,8 @@ public class Constans {
 
     public static final String[] title = {
             "Pierwszy obrazek", "Drugi obrazek", "Trzeci obrazek", "Czwarty obrazek",
-            "Piaty obrazek", "Szósty obrazek", "Siódmy obrazek", "Ósmy obrazek",
-            "Dziewi¹ty obrazek", "Dziesi¹ty obrazek", "Jedynasty obrazek", "Dwunasty obrazek"
+            "Piaty obrazek", "Szï¿½sty obrazek", "Siï¿½dmy obrazek", "ï¿½smy obrazek",
+            "Dziewiï¿½ty obrazek", "Dziesiï¿½ty obrazek", "Jedynasty obrazek", "Dwunasty obrazek"
     };
 
     public static final int[] distance = {
@@ -21,13 +21,13 @@ public class Constans {
     };
 
     public static final int[] ileZdjec = {
-            2, 4, 3, 2, 1, 3, 2, 4, 3, 4, 1, 3
+            2, 4, 3, 2, 1, 3, 2, 4, 3, 4, 1, 2
     };
 
     public static final String[] descr = {
             "OPIS!!! Pierwszy obrazek", "OPIS!!! Drugi obrazek", "OPIS!!! Trzeci obrazek",
-            "OPIS!!! Czwarty obrazek", "OPIS!!! Piaty obrazek", "OPIS!!! Szósty obrazek",
-            "OPIS!!! Siódmy obrazek", "OPIS!!! Ósmy obrazek", "OPIS!!! Dziewi¹ty obrazek",
-            "OPIS!!! Dziesi¹ty obrazek", "OPIS!!! Jedynasty obrazek", "OPIS!!! Dwunasty obrazek"
+            "OPIS!!! Czwarty obrazek", "OPIS!!! Piaty obrazek", "OPIS!!! Szï¿½sty obrazek",
+            "OPIS!!! Siï¿½dmy obrazek", "OPIS!!! ï¿½smy obrazek", "OPIS!!! Dziewiï¿½ty obrazek",
+            "OPIS!!! Dziesiï¿½ty obrazek", "OPIS!!! Jedynasty obrazek", "OPIS!!! Dwunasty obrazek"
     };
 }
