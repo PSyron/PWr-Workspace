@@ -6,191 +6,198 @@
     android:gravity="center"
     android:orientation="horizontal" >
 
-    <ImageView
-        android:id="@+id/image_1"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:src="@drawable/piate" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center" >
 
-    <ImageView
-        android:id="@+id/image_2"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:layout_toRightOf="@id/image_1"
-        android:src="@drawable/piate" />
+        <ImageView
+            android:id="@+id/image_1"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:src="@drawable/piate1" />
 
-    <ImageView
-        android:id="@+id/image_3"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:layout_toRightOf="@id/image_2"
-        android:src="@drawable/piate" />
+        <ImageView
+            android:id="@+id/image_2"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:layout_toRightOf="@id/image_1"
+            android:src="@drawable/piate2" />
 
-    <ImageView
-        android:id="@+id/image_4"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:layout_toRightOf="@id/image_3"
-        android:src="@drawable/piate" />
+        <ImageView
+            android:id="@+id/image_3"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:layout_toRightOf="@id/image_2"
+            android:src="@drawable/piate3" />
 
-    <ImageView
-        android:id="@+id/image_5"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_below="@id/image_1"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:src="@drawable/piate" />
+        <ImageView
+            android:id="@+id/image_4"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:layout_toRightOf="@id/image_3"
+            android:src="@drawable/piate4" />
 
-    <ImageView
-        android:id="@+id/image_6"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_below="@id/image_2"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:layout_toRightOf="@id/image_5"
-        android:src="@drawable/piate" />
+        <ImageView
+            android:id="@+id/image_5"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_below="@id/image_1"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:src="@drawable/piate5" />
 
-    <ImageView
-        android:id="@+id/image_7"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_below="@id/image_3"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:layout_toRightOf="@id/image_6"
-        android:src="@drawable/piate" />
+        <ImageView
+            android:id="@+id/image_6"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_below="@id/image_2"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:layout_toRightOf="@id/image_5"
+            android:src="@drawable/piate6" />
 
-    <ImageView
-        android:id="@+id/image_8"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_below="@id/image_4"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:layout_toRightOf="@id/image_7"
-        android:src="@drawable/piate" />
+        <ImageView
+            android:id="@+id/image_7"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_below="@id/image_3"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:layout_toRightOf="@id/image_6"
+            android:src="@drawable/piate7" />
 
-    <ImageView
-        android:id="@+id/image_9"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_below="@id/image_5"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:src="@drawable/piate" />
+        <ImageView
+            android:id="@+id/image_8"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_below="@id/image_4"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:layout_toRightOf="@id/image_7"
+            android:src="@drawable/piate8" />
 
-    <ImageView
-        android:id="@+id/image_10"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_below="@id/image_6"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:layout_toRightOf="@id/image_9"
-        android:src="@drawable/piate" />
+        <ImageView
+            android:id="@+id/image_9"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_below="@id/image_5"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:src="@drawable/piate9" />
 
-    <ImageView
-        android:id="@+id/image_11"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_below="@id/image_7"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:layout_toRightOf="@id/image_10"
-        android:src="@drawable/piate" />
+        <ImageView
+            android:id="@+id/image_10"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_below="@id/image_6"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:layout_toRightOf="@id/image_9"
+            android:src="@drawable/piate10" />
 
-    <ImageView
-        android:id="@+id/image_12"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_below="@id/image_8"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:layout_toRightOf="@id/image_11"
-        android:src="@drawable/piate" />
+        <ImageView
+            android:id="@+id/image_11"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_below="@id/image_7"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:layout_toRightOf="@id/image_10"
+            android:src="@drawable/piate11" />
 
-    <ImageView
-        android:id="@+id/image_13"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_below="@id/image_9"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:src="@drawable/piate" />
+        <ImageView
+            android:id="@+id/image_12"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_below="@id/image_8"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:layout_toRightOf="@id/image_11"
+            android:src="@drawable/piate12" />
 
-    <ImageView
-        android:id="@+id/image_14"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_below="@id/image_10"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:layout_toRightOf="@id/image_13"
-        android:src="@drawable/piate" />
+        <ImageView
+            android:id="@+id/image_13"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_below="@id/image_9"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:src="@drawable/piate13" />
 
-    <ImageView
-        android:id="@+id/image_15"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_below="@id/image_11"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:layout_toRightOf="@id/image_14"
-        android:src="@drawable/piate" />
+        <ImageView
+            android:id="@+id/image_14"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_below="@id/image_10"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:layout_toRightOf="@id/image_13"
+            android:src="@drawable/piate14" />
 
-    <ImageView
-        android:id="@+id/image_16"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_below="@id/image_12"
-        android:layout_marginBottom="@dimen/image_margin_h"
-        android:layout_marginLeft="@dimen/image_margin_w"
-        android:layout_marginRight="@dimen/image_margin_w"
-        android:layout_marginTop="@dimen/image_margin_h"
-        android:layout_toRightOf="@id/image_15"
-        android:src="@drawable/piate" />
+        <ImageView
+            android:id="@+id/image_15"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_below="@id/image_11"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:layout_toRightOf="@id/image_14"
+            android:src="@drawable/piate15" />
+
+        <ImageView
+            android:id="@+id/image_16"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
+            android:layout_below="@id/image_12"
+            android:layout_marginBottom="@dimen/image_margin_h"
+            android:layout_marginLeft="@dimen/image_margin_w"
+            android:layout_marginRight="@dimen/image_margin_w"
+            android:layout_marginTop="@dimen/image_margin_h"
+            android:layout_toRightOf="@id/image_15"
+            android:src="@drawable/piate16" />
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/big_picture"

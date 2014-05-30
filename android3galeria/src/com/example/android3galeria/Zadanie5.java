@@ -9,6 +9,7 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
@@ -42,33 +43,24 @@ public class Zadanie5 extends Activity {
     int mSpaceH;
     int mDuration = 1200;
     boolean pressed = false;
+    boolean bigOnePressd = false;
 
-    public OnTouchListener imgClk = new OnTouchListener() {
+    public OnLongClickListener imgClk = new OnLongClickListener() {
 
         @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    pressed = true;
-                    if (R.id.image_4 == v.getId() || v.getId() == R.id.image_8
-                            || v.getId() == R.id.image_12) {
-                        animToLB(v);
-                    } else if (R.id.image_13 == v.getId() || R.id.image_14 == v.getId()
-                            || R.id.image_15 == v.getId()) {
-                        animToRT(v);
-                    } else if (R.id.image_16 == v.getId()) {
-                        animToLT(v);
-                    } else {
-                        animaToRB(v);
-                    }
-
-                    return true; // if you want to handle the touch event
-                case MotionEvent.ACTION_UP:
-                    pressed = false;
-                    return true; // if you want to handle the touch event
-
+        public boolean onLongClick(View v) {
+            if (R.id.image_4 == v.getId() || v.getId() == R.id.image_8
+                    || v.getId() == R.id.image_12) {
+                animToLB(v);
+            } else if (R.id.image_13 == v.getId() || R.id.image_14 == v.getId()
+                    || R.id.image_15 == v.getId()) {
+                animToRT(v);
+            } else if (R.id.image_16 == v.getId()) {
+                animToLT(v);
+            } else {
+                animaToRB(v);
             }
-            return false;
+            return true;
         }
     };
 
@@ -76,8 +68,27 @@ public class Zadanie5 extends Activity {
 
         @Override
         public void onClick(View v) {
-            mUiBigOne.setVisibility(View.VISIBLE);
+            if (bigOnePressd == false) {
+                if (v instanceof ImageView) {
+                    bigOnePressd = true;
+                    mUiBigOne.setVisibility(View.VISIBLE);
 
+                    mUiBigOne.setImageDrawable(((ImageView) v).getDrawable());
+                }
+            }
+        }
+
+    };
+
+    OnTouchListener imgTouch = new OnTouchListener() {
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            if (event.getAction() == MotionEvent.ACTION_CANCEL
+                    || event.getAction() == MotionEvent.ACTION_UP) {
+                v.clearAnimation();
+            }
+            return false;
         }
     };
 
@@ -111,44 +122,80 @@ public class Zadanie5 extends Activity {
 
     public void initViews() {
         mUiPierwsze = (ImageView) findViewById(R.id.image_1);
-        mUiPierwsze.setOnTouchListener(imgClk);
+        mUiPierwsze.setOnLongClickListener(imgClk);
         mUiPierwsze.setOnClickListener(imgOneClick);
+        mUiPierwsze.setOnTouchListener(imgTouch);
         mUiDrugie = (ImageView) findViewById(R.id.image_2);
-        mUiDrugie.setOnTouchListener(imgClk);
+        mUiDrugie.setOnLongClickListener(imgClk);
+        mUiDrugie.setOnClickListener(imgOneClick);
+        mUiDrugie.setOnTouchListener(imgTouch);
         mUiTrzecie = (ImageView) findViewById(R.id.image_3);
-        mUiTrzecie.setOnTouchListener(imgClk);
+        mUiTrzecie.setOnLongClickListener(imgClk);
+        mUiTrzecie.setOnClickListener(imgOneClick);
+        mUiTrzecie.setOnTouchListener(imgTouch);
         mUiCzwarte = (ImageView) findViewById(R.id.image_4);
-        mUiCzwarte.setOnTouchListener(imgClk);
+        mUiCzwarte.setOnLongClickListener(imgClk);
+        mUiCzwarte.setOnClickListener(imgOneClick);
+        mUiCzwarte.setOnTouchListener(imgTouch);
         mUiPiate = (ImageView) findViewById(R.id.image_5);
-        mUiPiate.setOnTouchListener(imgClk);
+        mUiPiate.setOnLongClickListener(imgClk);
+        mUiPiate.setOnClickListener(imgOneClick);
+        mUiPiate.setOnTouchListener(imgTouch);
         mUiSzoste = (ImageView) findViewById(R.id.image_6);
-        mUiSzoste.setOnTouchListener(imgClk);
+        mUiSzoste.setOnLongClickListener(imgClk);
+        mUiSzoste.setOnClickListener(imgOneClick);
+        mUiSzoste.setOnTouchListener(imgTouch);
         mUiSiodme = (ImageView) findViewById(R.id.image_7);
-        mUiSiodme.setOnTouchListener(imgClk);
+        mUiSiodme.setOnLongClickListener(imgClk);
+        mUiSiodme.setOnClickListener(imgOneClick);
+        mUiSiodme.setOnTouchListener(imgTouch);
         mUiOsme = (ImageView) findViewById(R.id.image_8);
-        mUiOsme.setOnTouchListener(imgClk);
+        mUiOsme.setOnLongClickListener(imgClk);
+        mUiOsme.setOnClickListener(imgOneClick);
+        mUiOsme.setOnTouchListener(imgTouch);
         mUiDziewiate = (ImageView) findViewById(R.id.image_9);
-        mUiDziewiate.setOnTouchListener(imgClk);
+        mUiDziewiate.setOnLongClickListener(imgClk);
+        mUiDziewiate.setOnClickListener(imgOneClick);
+        mUiDziewiate.setOnTouchListener(imgTouch);
         mUiDziesiate = (ImageView) findViewById(R.id.image_10);
-        mUiDziesiate.setOnTouchListener(imgClk);
+        mUiDziesiate.setOnLongClickListener(imgClk);
+        mUiDziesiate.setOnClickListener(imgOneClick);
+        mUiDziesiate.setOnTouchListener(imgTouch);
         mUiJedynaste = (ImageView) findViewById(R.id.image_11);
-        mUiJedynaste.setOnTouchListener(imgClk);
+        mUiJedynaste.setOnLongClickListener(imgClk);
+        mUiJedynaste.setOnClickListener(imgOneClick);
+        mUiJedynaste.setOnTouchListener(imgTouch);
         mUiDwunaste = (ImageView) findViewById(R.id.image_12);
-        mUiDwunaste.setOnTouchListener(imgClk);
+        mUiDwunaste.setOnLongClickListener(imgClk);
+        mUiDwunaste.setOnClickListener(imgOneClick);
+        mUiDwunaste.setOnTouchListener(imgTouch);
         mUiTrzynaste = (ImageView) findViewById(R.id.image_13);
-        mUiTrzynaste.setOnTouchListener(imgClk);
+        mUiTrzynaste.setOnLongClickListener(imgClk);
+        mUiTrzynaste.setOnClickListener(imgOneClick);
+        mUiTrzynaste.setOnTouchListener(imgTouch);
         mUiCzternaste = (ImageView) findViewById(R.id.image_14);
-        mUiCzternaste.setOnTouchListener(imgClk);
+        mUiCzternaste.setOnLongClickListener(imgClk);
+        mUiCzternaste.setOnClickListener(imgOneClick);
+        mUiCzternaste.setOnTouchListener(imgTouch);
         mUiPietnaste = (ImageView) findViewById(R.id.image_15);
-        mUiPietnaste.setOnTouchListener(imgClk);
+        mUiPietnaste.setOnLongClickListener(imgClk);
+        mUiPietnaste.setOnClickListener(imgOneClick);
+        mUiPietnaste.setOnTouchListener(imgTouch);
         mUiSzesnaste = (ImageView) findViewById(R.id.image_16);
-        mUiSzesnaste.setOnTouchListener(imgClk);
+        mUiSzesnaste.setOnLongClickListener(imgClk);
+        mUiSzesnaste.setOnClickListener(imgOneClick);
+        mUiSzesnaste.setOnTouchListener(imgTouch);
         mUiBigOne = (ImageView) findViewById(R.id.big_picture);
+
         mUiBigOne.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                animBig(v);
+                if (bigOnePressd == true) {
+                    bigOnePressd = false;
+                    animBig(v);
+                    v.setVisibility(View.INVISIBLE);
+                }
             }
         });
     }
@@ -201,28 +248,8 @@ public class Zadanie5 extends Activity {
         // Animation set to join both scaling and moving
         final AnimationSet animSet = new AnimationSet(true);
         animSet.setFillEnabled(true);
-        animSet.setAnimationListener(new AnimationListener() {
+        animSet.setFillAfter(true);
 
-            @Override
-            public void onAnimationStart(Animation animation) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                if (pressed == true) {
-                    animSet.start();
-                }
-
-            }
-        });
         animSet.addAnimation(scale);
         //  animSet.addAnimation(slideUp);
         // Launching animation set
@@ -250,28 +277,8 @@ public class Zadanie5 extends Activity {
         // Animation set to join both scaling and moving
         final AnimationSet animSet = new AnimationSet(true);
         animSet.setFillEnabled(true);
-        animSet.setAnimationListener(new AnimationListener() {
+        animSet.setFillAfter(true);
 
-            @Override
-            public void onAnimationStart(Animation animation) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                if (pressed == true) {
-                    animSet.start();
-                }
-
-            }
-        });
         animSet.addAnimation(scale);
         //  animSet.addAnimation(slideUp);
         // Launching animation set
@@ -299,28 +306,7 @@ public class Zadanie5 extends Activity {
         final AnimationSet animSet = new AnimationSet(true);
         animSet.setFillEnabled(true);
         animSet.addAnimation(scale);
-        animSet.setAnimationListener(new AnimationListener() {
-
-            @Override
-            public void onAnimationStart(Animation animation) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                if (pressed == true) {
-                    animSet.start();
-                }
-
-            }
-        });
+        animSet.setFillAfter(true);
         //  animSet.addAnimation(slideUp);
         // Launching animation set
         view.startAnimation(animSet);
@@ -330,6 +316,33 @@ public class Zadanie5 extends Activity {
         view.bringToFront();
         Animation scale = new ScaleAnimation(1.0f, 2.9f, 1.0f, 2.9f, Animation.RELATIVE_TO_SELF,
                 1.0f, Animation.RELATIVE_TO_SELF, 1.0f);
+
+        //System.out.println(view.getX() + "   " + view.getY());
+        // Toast.makeText(getApplicationContext(), view.getX() + "   " + view.getY(),
+        //         Toast.LENGTH_SHORT).show();
+        // 1 second duration
+        scale.setDuration(mDuration);
+        // Moving up
+        //        Animation slideUp = new TranslateAnimation(view.getLeft(), view.getRight() + view.getX(),
+        //                view.getTop(), view.getBottom() + view.getY());
+        //        Animation slideUp = new TranslateAnimation(view.getLeft(), view.getLeft(),
+        //             view.getTop(), view.getTop());
+        // 1 second duration
+        //  slideUp.setDuration(1000);
+        // Animation set to join both scaling and moving
+        final AnimationSet animSet = new AnimationSet(true);
+        animSet.setFillEnabled(true);
+        animSet.addAnimation(scale);
+        //  animSet.addAnimation(slideUp);
+        animSet.setFillAfter(true);
+        // Launching animation set
+        view.startAnimation(animSet);
+    }
+
+    public void animBig(final View view) {
+        view.bringToFront();
+        Animation scale = new ScaleAnimation(1.0f, 0.3f, 1.0f, 0.3f, Animation.RELATIVE_TO_SELF,
+                0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
 
         //System.out.println(view.getX() + "   " + view.getY());
         // Toast.makeText(getApplicationContext(), view.getX() + "   " + view.getY(),
@@ -364,58 +377,13 @@ public class Zadanie5 extends Activity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                if (pressed == true) {
-                    animSet.start();
-                }
+
+                mUiBigOne.setVisibility(View.INVISIBLE);
 
             }
         });
-        // Launching animation set
-        view.startAnimation(animSet);
-    }
 
-    public void animBig(final View view) {
-        view.bringToFront();
-        Animation scale = new ScaleAnimation(1.0f, 0.3f, 1.0f, 0.3f, Animation.RELATIVE_TO_SELF,
-                0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-
-        //System.out.println(view.getX() + "   " + view.getY());
-        // Toast.makeText(getApplicationContext(), view.getX() + "   " + view.getY(),
-        //         Toast.LENGTH_SHORT).show();
-        // 1 second duration
-        scale.setDuration(mDuration);
-        // Moving up
-        //        Animation slideUp = new TranslateAnimation(view.getLeft(), view.getRight() + view.getX(),
-        //                view.getTop(), view.getBottom() + view.getY());
-        //        Animation slideUp = new TranslateAnimation(view.getLeft(), view.getLeft(),
-        //             view.getTop(), view.getTop());
-        // 1 second duration
-        //  slideUp.setDuration(1000);
-        // Animation set to join both scaling and moving
-        AnimationSet animSet = new AnimationSet(true);
-        animSet.setFillEnabled(true);
-        animSet.addAnimation(scale);
-        //  animSet.addAnimation(slideUp);
-
-        animSet.setAnimationListener(new AnimationListener() {
-
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                view.setVisibility(View.INVISIBLE);
-
-            }
-        });
+        // animSet.setFillAfter(true);
         // Launching animation set
         view.startAnimation(animSet);
     }
