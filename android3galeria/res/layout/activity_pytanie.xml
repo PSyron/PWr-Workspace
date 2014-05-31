@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="8dp" >
+
+    <TextView
+        android:id="@+id/pytanie_numer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="Pytanie testowe" />
+
+    <TextView
+        android:id="@+id/pytanie_tresc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="Kim jest Korwin Max Cejrowski?" />
+
+    <ImageView
+        android:id="@+id/pytanie_obrazek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/piate1" />
+
+    <RelativeLayout
+        android:id="@+id/pierwsze"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/textview_rounded" >
+
+        <TextView
+            android:id="@+id/pytanie_pierwsze_odpowiedz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/Gray"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Krulem"
+            android:textColor="@color/Red"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/pytanie_pierwsze_poprawna"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/pytanie_pierwsze_odpowiedz"
+            android:layout_alignTop="@id/pytanie_pierwsze_odpowiedz"
+            android:padding="4dp"
+            android:text="POPRAWNA"
+            android:textColor="@color/Green"
+            android:textSize="8sp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/pytanie_pierwsze_wybrana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/pytanie_pierwsze_odpowiedz"
+            android:layout_alignRight="@id/pytanie_pierwsze_odpowiedz"
+            android:padding="4dp"
+            android:text="WYBRANA"
+            android:textColor="@color/White"
+            android:textSize="8sp"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/drugie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/textview_rounded" >
+
+        <TextView
+            android:id="@+id/pytanie_drugie_odpowiedz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/Gray"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Wielkim Imperatorem"
+            android:textColor="@color/Red"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/pytanie_drugie_poprawna"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/pytanie_drugie_odpowiedz"
+            android:layout_alignTop="@id/pytanie_drugie_odpowiedz"
+            android:padding="4dp"
+            android:text="POPRAWNA"
+            android:textColor="@color/Green"
+            android:textSize="8sp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/pytanie_drugie_wybrana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/pytanie_drugie_odpowiedz"
+            android:layout_alignRight="@id/pytanie_drugie_odpowiedz"
+            android:padding="4dp"
+            android:text="WYBRANA"
+            android:textColor="@color/White"
+            android:textSize="8sp"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/trzecie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/textview_rounded" >
+
+        <TextView
+            android:id="@+id/pytanie_trzecie_odpowiedz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/Gray"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Bogiem"
+            android:textColor="@color/Red"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/pytanie_trzecie_poprawna"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/pytanie_trzecie_odpowiedz"
+            android:layout_alignTop="@id/pytanie_trzecie_odpowiedz"
+            android:padding="4dp"
+            android:text="POPRAWNA"
+            android:textColor="@color/Green"
+            android:textSize="8sp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/pytanie_trzecie_wybrana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/pytanie_trzecie_odpowiedz"
+            android:layout_alignRight="@id/pytanie_trzecie_odpowiedz"
+            android:padding="4dp"
+            android:text="WYBRANA"
+            android:textColor="@color/White"
+            android:textSize="8sp"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/pytanie_prosba"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Kliknij proszę na odpowiedź!"
+            android:textColor="@color/Red"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/pytanie_nastepne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/textview_rounded"
+            android:padding="4dp"
+            android:text="Następna odpowiedź"
+            android:textColor="@color/Black"
+            android:textSize="8sp"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+</LinearLayout>

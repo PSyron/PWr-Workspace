@@ -4,4 +4,52 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <ImageView
+        android:id="@+id/pierwsze"
+        android:layout_width="160dp"
+        android:layout_height="90dp"
+        android:layout_alignBottom="@+id/drugie"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="36dp"
+        android:layout_marginLeft="22dp"
+        android:src="@drawable/piate1" />
+
+    <ImageView
+        android:id="@+id/drugie"
+        android:layout_width="160dp"
+        android:layout_height="90dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/piate2" />
+
+    <ImageView
+        android:id="@+id/trzecie"
+        android:layout_width="160dp"
+        android:layout_height="90dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/drugie"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="39dp"
+        android:src="@drawable/piate3" />
+
+    <TextView
+        android:id="@+id/tytul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="Super samochody \n TEST" />
+
+    <TextView
+        android:id="@+id/button_szosty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/textview_rounded"
+        android:padding="8dp"
+        android:text="Ropocznij Test" />
+
 </RelativeLayout>

@@ -13,11 +13,14 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
+import szoste.Zadanie6;
+
 public class ListFragment extends Fragment {
 
     ListView mUiListView;
     ImageAdapter mAdapter;
     Button mUiButton;
+    Button mUiButton6;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,6 +34,15 @@ public class ListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), Zadanie5.class);
+                startActivity(intent);
+            }
+        });
+        mUiButton6 = (Button) rootView.findViewById(R.id.button6);
+        mUiButton6.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), Zadanie6.class);
                 startActivity(intent);
             }
         });
