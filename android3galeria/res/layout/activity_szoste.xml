@@ -49,6 +49,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="64dp"
         android:background="@drawable/textview_rounded"
+        android:gravity="center"
         android:padding="8dp"
         android:text="Ropocznij Test" />
 
