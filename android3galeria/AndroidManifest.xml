@@ -38,6 +38,10 @@
             android:name="szoste.Pytania"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="osme.ScrollActivity"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>
