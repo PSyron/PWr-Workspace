@@ -9,7 +9,6 @@ public class Constans {
             R.drawable.images, R.drawable.funn, R.drawable.tumb, R.drawable.zdjecie4,
             R.drawable.images3, R.drawable.maes
     };
-    
 
     public static final String[] title = {
             "Pierwszy obrazek", "Drugi obrazek", "Trzeci obrazek", "Czwarty obrazek",
@@ -31,4 +30,5 @@ public class Constans {
             "OPIS!!! Si�dmy obrazek", "OPIS!!! �smy obrazek", "OPIS!!! Dziewi�ty obrazek",
             "OPIS!!! Dziesi�ty obrazek", "OPIS!!! Jedynasty obrazek", "OPIS!!! Dwunasty obrazek"
     };
+
 }

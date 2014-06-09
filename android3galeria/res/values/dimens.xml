@@ -7,7 +7,8 @@
     <dimen name="image_width">72dp</dimen>
     <dimen name="image_margin_w">32dp</dimen>
     <dimen name="image_margin_h">18dp</dimen>
-   <dimen name="big_image_height">225dp</dimen>
+    <dimen name="big_image_height">225dp</dimen>
     <dimen name="big_image_width">400dp</dimen>
+    <dimen name="music_ctrl_size">64dp</dimen>
 
 </resources>

@@ -46,6 +46,14 @@
             android:name="osme.ScrollSecActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="dziewiate.Scroll9Activity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="dziewiate.SongActivity"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>

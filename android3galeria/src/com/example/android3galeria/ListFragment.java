@@ -13,6 +13,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
+import dziewiate.Scroll9Activity;
 import osme.ScrollActivity;
 import szoste.Zadanie6;
 
@@ -23,6 +24,7 @@ public class ListFragment extends Fragment {
     Button mUiButton;
     Button mUiButton6;
     Button mUiButton8;
+    Button mUiButton9;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,6 +57,15 @@ public class ListFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ScrollActivity.class);
+                startActivity(intent);
+            }
+        });
+        mUiButton9 = (Button) rootView.findViewById(R.id.button9);
+        mUiButton9.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), Scroll9Activity.class);
                 startActivity(intent);
             }
         });

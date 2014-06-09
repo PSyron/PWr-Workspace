@@ -29,6 +29,14 @@
         android:text="Siódme - nie ma jeszcze" />
 
     <Button
+        android:id="@+id/button9"
+        android:layout_width="80dp"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/button7"
+        android:text="Dziewiąte" />
+
+    <Button
         android:id="@+id/button8"
         android:layout_width="80dp"
         android:layout_height="45dp"
@@ -40,7 +48,7 @@
         android:id="@+id/list_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/button8"
+        android:layout_below="@id/button9"
         android:background="@color/White" >
     </ListView>
 

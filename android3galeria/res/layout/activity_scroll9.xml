@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LightGrey" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/DarkGray"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="PHOTO" />
+
+        <osme.MyGrid
+            android:id="@+id/scroll_first_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" >
+        </osme.MyGrid>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/DarkGray"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="MUSIC" >
+        </TextView>
+
+        <osme.MyGrid
+            android:id="@+id/scroll_second_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" >
+        </osme.MyGrid>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/DarkGray"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="MOVIE" >
+        </TextView>
+
+        <osme.MyGrid
+            android:id="@+id/scroll_third_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" >
+        </osme.MyGrid>
+    </LinearLayout>
+
+</ScrollView>
