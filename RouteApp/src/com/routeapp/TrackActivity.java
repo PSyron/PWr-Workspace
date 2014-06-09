@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -31,22 +32,20 @@ public class TrackActivity extends Activity {
 	Button mUiBtStop;
 	GPSTracker mGps;
 	Boolean mStarted;
+	ArrayList<LatLng> general = null;
+	PolylineOptions generalPoli;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_track);
 		points = new ArrayList<LatLng>();
+		general = new ArrayList<LatLng>();
 		lineOptions = new PolylineOptions();
+		generalPoli = new PolylineOptions();
 		mStarted = false;
 		mGps = new GPSTracker(this);
-		if (mGps.canGetLocation()) {
-			Log.e("log", "true");
-			double lat = mGps.getLatitude(); // returns latitude
-			double lng = mGps.getLongitude(); // returns longitude
-			StartingPoint = new LatLng(lat, lng);
 
-		}
 		init();
 		try {
 			if (googleMap == null) {
@@ -54,9 +53,7 @@ public class TrackActivity extends Activity {
 						.findFragmentById(R.id.map)).getMap();
 			}
 			googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-
-			Marker TP = googleMap.addMarker(new MarkerOptions().position(
-					StartingPoint).title("Starting Point"));
+			googleMap.setBuildingsEnabled(true);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -72,10 +69,20 @@ public class TrackActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				if (mGps.canGetLocation()) {
+					Log.e("log", "true");
+
+					double lat = mGps.getLatitude(); // returns latitude
+					double lng = mGps.getLongitude(); // returns longitude
+					StartingPoint = new LatLng(lat, lng);
+					general.add(StartingPoint);
+					Marker TP = googleMap.addMarker(new MarkerOptions()
+							.position(StartingPoint).title("Starting Point"));
+				}
 
 				googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
 						new LatLng(mGps.getLatitude(), mGps.getLongitude()),
-						12.0f));
+						20.0f));
 				Toast.makeText(
 						getApplicationContext(),
 						"Rozpoczęto pomiar, naciśnij STOP aby zobaczyć trase wynikową",
@@ -96,12 +103,18 @@ public class TrackActivity extends Activity {
 						.title("Finish Point"));
 
 				mGps.stopUsingGPS();
-
+				// general.add(new LatLng(mGps.getLocation().getLatitude(), mGps
+				// .getLocation().getLongitude()));
 				lineOptions.addAll(points);
 				lineOptions.width(2);
 				lineOptions.color(Color.RED);
-
+				// generalPoli.addAll(general);
+				Log.e("log size", "" + points.size() + "  "
+						+ lineOptions.getPoints().size());
+				// googleMap.addPolyline(generalPoli);
 				googleMap.addPolyline(lineOptions);
+				points.clear();
+				lineOptions.getPoints().clear();
 
 			}
 		});
@@ -154,18 +167,32 @@ public class TrackActivity extends Activity {
 	class Task implements Runnable {
 		double lat;
 		double lng;
+		double prevLat = 0;
+		double prevLng = 0;
 
 		@Override
 		public void run() {
 
+			// double counter = 0;
+			Location lok;
 			while (mStarted) {
 				try {
 					Thread.sleep(1000); // TODO Tu ustawiasz czas pomiedzy
-										// pomiarami
-					lat = mGps.getLatitude();
-					lng = mGps.getLongitude();
+					lok = mGps.getLocation(); // pomiarami
+					lat = lok.getLatitude();
+					lng = lok.getLongitude();
 					points.add(new LatLng(lat, lng));
-
+					// if (lat != prevLat || lng != prevLng) {
+					// Toast.makeText(
+					// getApplicationContext(),
+					// "Lat " + (prevLat - lat) * 1000 + " Lng "
+					// + (prevLng - lng) * 1000,
+					// Toast.LENGTH_LONG).show();
+					// }
+					prevLat = lat;
+					prevLng = lng;
+					// points.add(new LatLng(lat + counter, lng + counter));
+					// counter += 0.0005;
 					Log.e("log", lat + " " + lng + " size " + points.size());
 				} catch (InterruptedException e) {
 					e.printStackTrace();
