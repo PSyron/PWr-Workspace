@@ -5,9 +5,9 @@ import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -22,6 +22,7 @@ import com.example.android3galeria.R;
 public class ScrollSec9Activity extends FragmentActivity {
 
     int extrasInt;
+    boolean klikniete;
     ViewPager mPager;
     ScrollTest9FragmentAdapter mAdapter;
     Button mUiButton;
@@ -53,15 +54,52 @@ public class ScrollSec9Activity extends FragmentActivity {
 
         mPager.setAdapter(mAdapter);
         mPager.setCurrentItem(mPage);
-        mPager.setOnClickListener(new OnClickListener() {
+        mPager.setClickable(true);
+
+        mPager.setOnTouchListener(new View.OnTouchListener() {
+            float oldX = 0, newX = 0, sens = 5;
+            float mDownX;
+            float mDownY;
+            final float SCROLL_THRESHOLD = 10;
+            boolean isOnClick;
 
             @Override
-            public void onClick(View v) {
-                animBig(v);
+            public boolean onTouch(View v, MotionEvent event) {
 
+                switch (event.getAction()) {
+
+                    case MotionEvent.ACTION_DOWN:
+                        mDownX = event.getX();
+                        mDownY = event.getY();
+                        isOnClick = true;
+                        Log.e("fragment", "click");
+                        if (!klikniete) {
+                            animBig(v);
+                        } else {
+                            animSmall(v);
+                        }
+
+                        break;
+                    case MotionEvent.ACTION_CANCEL:
+                    case MotionEvent.ACTION_UP:
+                        if (isOnClick) {
+                            Log.i("up", "onClick ");
+                            //TODO onClick code
+                        }
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        if (isOnClick
+                                && (Math.abs(mDownX - event.getX()) > SCROLL_THRESHOLD || Math
+                                        .abs(mDownY - event.getY()) > SCROLL_THRESHOLD)) {
+                            Log.i("Move", "movement detected");
+                            isOnClick = false;
+                            v.clearAnimation();
+                        }
+                        break;
+                }
+                return false;
             }
         });
-
     }
 
     @Override
@@ -112,20 +150,78 @@ public class ScrollSec9Activity extends FragmentActivity {
 
     public void animBig(final View view) {
         Log.e("fragment", "click");
-        view.bringToFront();
-        Animation scale = new ScaleAnimation(1.0f, 1.3f, 1.0f, 1.3f, Animation.RELATIVE_TO_SELF,
+        //   view.bringToFront();
+        Animation scale = new ScaleAnimation(1.0f, 1.25f, 1.0f, 1.25f, Animation.RELATIVE_TO_SELF,
                 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
 
-        scale.setDuration(2000);
+        scale.setDuration(1500);
 
         final AnimationSet animSet = new AnimationSet(true);
         animSet.setFillEnabled(true);
         animSet.addAnimation(scale);
         //  animSet.addAnimation(slideUp);
+        animSet.setAnimationListener(new AnimationListener() {
 
-        // animSet.setFillAfter(true);
+            @Override
+            public void onAnimationStart(Animation animation) {
+                klikniete = true;
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+        animSet.setFillAfter(true);
         // Launching animation set
         view.startAnimation(animSet);
+
+    }
+
+    public void animSmall(final View view) {
+        Log.e("fragment", "click");
+        //   view.bringToFront();
+        Animation scale = new ScaleAnimation(1.25f, 1.0f, 1.25f, 1.0f, Animation.RELATIVE_TO_SELF,
+                0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+
+        scale.setDuration(1500);
+
+        final AnimationSet animSet = new AnimationSet(true);
+        animSet.setFillEnabled(true);
+        animSet.addAnimation(scale);
+        //  animSet.addAnimation(slideUp);
+        animSet.setAnimationListener(new AnimationListener() {
+
+            @Override
+            public void onAnimationStart(Animation animation) {
+                klikniete = false;
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+        animSet.setFillAfter(true);
+        // Launching animation set
+        view.startAnimation(animSet);
+
     }
 
 }
