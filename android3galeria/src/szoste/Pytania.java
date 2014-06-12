@@ -42,6 +42,8 @@ public class Pytania extends Activity {
     private SharedPreferences preferences;
     public static final String MY_PREFERENCES = "myPreferences";
 
+    boolean poAnalizie;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +56,7 @@ public class Pytania extends Activity {
         actionBar.hide();
 
         preferences = getSharedPreferences(MY_PREFERENCES, Activity.MODE_PRIVATE);
-
+        poAnalizie = preferences.getBoolean("poAnalizie", false);
         initView();
         initPierwsze();
     }
@@ -87,20 +89,30 @@ public class Pytania extends Activity {
     public void initPierwsze() {
         int odpowiedz = preferences.getInt("first", 0);
         mUiPytanieNumer.setText("Pytanie 1");
-        mUiPytanieTresc.setText("Jakiego koloru jest to Lambo?");
-        mUiObrazek.setImageResource(R.drawable.piate13);
 
-        mUiPierwszeOdp.setText("Czerwone");
         mUiPierwszePop.setVisibility(View.INVISIBLE);
         mUiPierwszeWybr.setVisibility(View.INVISIBLE);
 
-        mUiDrugieOdp.setText("Pomaranczowe");
         mUiDrugiePop.setVisibility(View.INVISIBLE);
         mUiDrugieWybr.setVisibility(View.INVISIBLE);
 
-        mUiTrzecieOdp.setText("Zielone");
         mUiTrzeciePop.setVisibility(View.INVISIBLE);
         mUiTrzecieWybr.setVisibility(View.INVISIBLE);
+        if (!poAnalizie) {
+            mUiPytanieTresc.setText("Jakiego koloru jest to Lambo?");
+            mUiObrazek.setImageResource(R.drawable.piate13);
+
+            mUiPierwszeOdp.setText("Czerwone");
+            mUiDrugieOdp.setText("Pomaranczowe");
+            mUiTrzecieOdp.setText("Zielone");
+        } else {
+            mUiPytanieTresc.setText("Którego albumu Ellie Goulding to jest okładka?");
+            mUiObrazek.setImageResource(R.drawable.ellie);
+
+            mUiPierwszeOdp.setText("Lights");
+            mUiDrugieOdp.setText("Burn");
+            mUiTrzecieOdp.setText("Halcyon");
+        }
 
         if (odpowiedz == 0) {
             mUiProsba.setVisibility(View.VISIBLE);
@@ -136,47 +148,80 @@ public class Pytania extends Activity {
                 }
             });
         } else if (odpowiedz != 0) {
-            mUiProsba.setVisibility(View.INVISIBLE);
-            mUiNastepne.setVisibility(View.VISIBLE);
-            if (odpowiedz == 1) {
-                mUiPierwszeWybr.setVisibility(View.VISIBLE);
-            } else if (odpowiedz == 2) {
-                mUiDrugieWybr.setVisibility(View.VISIBLE);
-            } else if (odpowiedz == 3) {
-                mUiTrzecieWybr.setVisibility(View.VISIBLE);
-            }
-            mUiDrugiePop.setVisibility(View.VISIBLE);
-
-            mUiNastepne.setOnClickListener(new OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    SharedPreferences.Editor preferencesEditor = preferences.edit();
-                    preferencesEditor.putInt("first", 0);
-                    preferencesEditor.commit();
-                    initDrugie();
+            if (!poAnalizie) {
+                mUiProsba.setVisibility(View.INVISIBLE);
+                mUiNastepne.setVisibility(View.VISIBLE);
+                if (odpowiedz == 1) {
+                    mUiPierwszeWybr.setVisibility(View.VISIBLE);
+                } else if (odpowiedz == 2) {
+                    mUiDrugieWybr.setVisibility(View.VISIBLE);
+                } else if (odpowiedz == 3) {
+                    mUiTrzecieWybr.setVisibility(View.VISIBLE);
                 }
-            });
+                mUiDrugiePop.setVisibility(View.VISIBLE);
+
+                mUiNastepne.setOnClickListener(new OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        SharedPreferences.Editor preferencesEditor = preferences.edit();
+                        preferencesEditor.putInt("first", 0);
+                        preferencesEditor.commit();
+                        initDrugie();
+                    }
+                });
+            } else {
+                mUiProsba.setVisibility(View.INVISIBLE);
+                mUiNastepne.setVisibility(View.VISIBLE);
+                if (odpowiedz == 1) {
+                    mUiPierwszeWybr.setVisibility(View.VISIBLE);
+                } else if (odpowiedz == 2) {
+                    mUiDrugieWybr.setVisibility(View.VISIBLE);
+                } else if (odpowiedz == 3) {
+                    mUiTrzecieWybr.setVisibility(View.VISIBLE);
+                }
+                mUiTrzeciePop.setVisibility(View.VISIBLE);
+
+                mUiNastepne.setOnClickListener(new OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        SharedPreferences.Editor preferencesEditor = preferences.edit();
+                        preferencesEditor.putInt("first", 0);
+                        preferencesEditor.commit();
+                        initDrugie();
+                    }
+                });
+            }
         }
     }
 
     void initDrugie() {
         int odpowiedz = preferences.getInt("second", 0);
         mUiPytanieNumer.setText("Pytanie 2");
-        mUiPytanieTresc.setText("Po której stronie stoi czarne auto?");
-        mUiObrazek.setImageResource(R.drawable.piate5);
 
-        mUiPierwszeOdp.setText("Nie stoi!");
         mUiPierwszePop.setVisibility(View.INVISIBLE);
         mUiPierwszeWybr.setVisibility(View.INVISIBLE);
 
-        mUiDrugieOdp.setText("Po prawej");
         mUiDrugiePop.setVisibility(View.INVISIBLE);
         mUiDrugieWybr.setVisibility(View.INVISIBLE);
 
-        mUiTrzecieOdp.setText("Po lewej");
         mUiTrzeciePop.setVisibility(View.INVISIBLE);
         mUiTrzecieWybr.setVisibility(View.INVISIBLE);
+
+        if (!poAnalizie) {
+            mUiPytanieTresc.setText("Po której stronie stoi czarne auto?");
+            mUiObrazek.setImageResource(R.drawable.piate5);
+            mUiPierwszeOdp.setText("Nie stoi!");
+            mUiDrugieOdp.setText("Po prawej");
+            mUiTrzecieOdp.setText("Po lewej");
+        } else {
+            mUiPytanieTresc.setText("Kto nie brał udziału w tworzeniu płyty?");
+            mUiObrazek.setImageResource(R.drawable.donatan);
+            mUiPierwszeOdp.setText("Ich Troje");
+            mUiDrugieOdp.setText("Chada");
+            mUiTrzecieOdp.setText("TEDE");
+        }
 
         if (odpowiedz == 0) {
             mUiProsba.setVisibility(View.VISIBLE);
@@ -212,47 +257,80 @@ public class Pytania extends Activity {
                 }
             });
         } else if (odpowiedz != 0) {
-            mUiProsba.setVisibility(View.INVISIBLE);
-            mUiNastepne.setVisibility(View.VISIBLE);
-            if (odpowiedz == 1) {
-                mUiPierwszeWybr.setVisibility(View.VISIBLE);
-            } else if (odpowiedz == 2) {
-                mUiDrugieWybr.setVisibility(View.VISIBLE);
-            } else if (odpowiedz == 3) {
-                mUiTrzecieWybr.setVisibility(View.VISIBLE);
-            }
-            mUiTrzeciePop.setVisibility(View.VISIBLE);
-
-            mUiNastepne.setOnClickListener(new OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    SharedPreferences.Editor preferencesEditor = preferences.edit();
-                    preferencesEditor.putInt("second", 0);
-                    preferencesEditor.commit();
-                    initTrzecie();
+            if (!poAnalizie) {
+                mUiProsba.setVisibility(View.INVISIBLE);
+                mUiNastepne.setVisibility(View.VISIBLE);
+                if (odpowiedz == 1) {
+                    mUiPierwszeWybr.setVisibility(View.VISIBLE);
+                } else if (odpowiedz == 2) {
+                    mUiDrugieWybr.setVisibility(View.VISIBLE);
+                } else if (odpowiedz == 3) {
+                    mUiTrzecieWybr.setVisibility(View.VISIBLE);
                 }
-            });
+                mUiTrzeciePop.setVisibility(View.VISIBLE);
+
+                mUiNastepne.setOnClickListener(new OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        SharedPreferences.Editor preferencesEditor = preferences.edit();
+                        preferencesEditor.putInt("second", 0);
+                        preferencesEditor.commit();
+                        initTrzecie();
+                    }
+                });
+            } else {
+                mUiProsba.setVisibility(View.INVISIBLE);
+                mUiNastepne.setVisibility(View.VISIBLE);
+                if (odpowiedz == 1) {
+                    mUiPierwszeWybr.setVisibility(View.VISIBLE);
+                } else if (odpowiedz == 2) {
+                    mUiDrugieWybr.setVisibility(View.VISIBLE);
+                } else if (odpowiedz == 3) {
+                    mUiTrzecieWybr.setVisibility(View.VISIBLE);
+                }
+                mUiPierwszePop.setVisibility(View.VISIBLE);
+
+                mUiNastepne.setOnClickListener(new OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        SharedPreferences.Editor preferencesEditor = preferences.edit();
+                        preferencesEditor.putInt("second", 0);
+                        preferencesEditor.commit();
+                        initTrzecie();
+                    }
+                });
+            }
         }
     }
 
     public void initTrzecie() {
         int odpowiedz = preferences.getInt("third", 0);
         mUiPytanieNumer.setText("Pytanie 3");
-        mUiPytanieTresc.setText("Jaki to model Lambo?");
-        mUiObrazek.setImageResource(R.drawable.piate14);
 
-        mUiPierwszeOdp.setText("Aventador");
         mUiPierwszePop.setVisibility(View.INVISIBLE);
         mUiPierwszeWybr.setVisibility(View.INVISIBLE);
 
-        mUiDrugieOdp.setText("Diablo");
         mUiDrugiePop.setVisibility(View.INVISIBLE);
         mUiDrugieWybr.setVisibility(View.INVISIBLE);
 
-        mUiTrzecieOdp.setText("Nie wiem");
         mUiTrzeciePop.setVisibility(View.INVISIBLE);
         mUiTrzecieWybr.setVisibility(View.INVISIBLE);
+
+        if (!poAnalizie) {
+            mUiPytanieTresc.setText("Jaki to model Lambo?");
+            mUiObrazek.setImageResource(R.drawable.piate14);
+            mUiPierwszeOdp.setText("Aventador");
+            mUiDrugieOdp.setText("Diablo");
+            mUiTrzecieOdp.setText("Nie wiem");
+        } else {
+            mUiPytanieTresc.setText("Kto był wokalistą Linkin Park na tej płycie?");
+            mUiObrazek.setImageResource(R.drawable.lp);
+            mUiPierwszeOdp.setText("Doda");
+            mUiDrugieOdp.setText("Chester Bennington");
+            mUiTrzecieOdp.setText("Nie było wokalisty");
+        }
 
         if (odpowiedz == 0) {
             mUiProsba.setVisibility(View.VISIBLE);
@@ -283,32 +361,59 @@ public class Pytania extends Activity {
                 public void onClick(View v) {
                     SharedPreferences.Editor preferencesEditor = preferences.edit();
                     preferencesEditor.putInt("third", 3);
+                    preferencesEditor.putBoolean("poAnalizie", false);
                     preferencesEditor.commit();
                     finish();
                 }
             });
         } else if (odpowiedz != 0) {
-            mUiProsba.setVisibility(View.INVISIBLE);
-            mUiNastepne.setVisibility(View.VISIBLE);
-            if (odpowiedz == 1) {
-                mUiPierwszeWybr.setVisibility(View.VISIBLE);
-            } else if (odpowiedz == 2) {
-                mUiDrugieWybr.setVisibility(View.VISIBLE);
-            } else if (odpowiedz == 3) {
-                mUiTrzecieWybr.setVisibility(View.VISIBLE);
-            }
-            mUiPierwszePop.setVisibility(View.VISIBLE);
-
-            mUiNastepne.setOnClickListener(new OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    SharedPreferences.Editor preferencesEditor = preferences.edit();
-                    preferencesEditor.putInt("third", 0);
-                    preferencesEditor.commit();
-                    finish();
+            if (!poAnalizie) {
+                mUiProsba.setVisibility(View.INVISIBLE);
+                mUiNastepne.setVisibility(View.VISIBLE);
+                if (odpowiedz == 1) {
+                    mUiPierwszeWybr.setVisibility(View.VISIBLE);
+                } else if (odpowiedz == 2) {
+                    mUiDrugieWybr.setVisibility(View.VISIBLE);
+                } else if (odpowiedz == 3) {
+                    mUiTrzecieWybr.setVisibility(View.VISIBLE);
                 }
-            });
+                mUiPierwszePop.setVisibility(View.VISIBLE);
+
+                mUiNastepne.setOnClickListener(new OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        SharedPreferences.Editor preferencesEditor = preferences.edit();
+                        preferencesEditor.putInt("third", 0);
+                        preferencesEditor.putBoolean("poAnalizie", true);
+                        preferencesEditor.commit();
+                        finish();
+                    }
+                });
+            } else {
+                mUiProsba.setVisibility(View.INVISIBLE);
+                mUiNastepne.setVisibility(View.VISIBLE);
+                if (odpowiedz == 1) {
+                    mUiPierwszeWybr.setVisibility(View.VISIBLE);
+                } else if (odpowiedz == 2) {
+                    mUiDrugieWybr.setVisibility(View.VISIBLE);
+                } else if (odpowiedz == 3) {
+                    mUiTrzecieWybr.setVisibility(View.VISIBLE);
+                }
+                mUiDrugiePop.setVisibility(View.VISIBLE);
+
+                mUiNastepne.setOnClickListener(new OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        SharedPreferences.Editor preferencesEditor = preferences.edit();
+                        preferencesEditor.putInt("third", 0);
+                        preferencesEditor.putBoolean("poAnalizie", false);
+                        preferencesEditor.commit();
+                        finish();
+                    }
+                });
+            }
         }
     }
 

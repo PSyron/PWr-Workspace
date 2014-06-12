@@ -18,6 +18,7 @@ public class ScrollSecActivity extends FragmentActivity {
     ViewPager mPager;
     ScrollTestFragmentAdapter mAdapter;
     Button mUiButton;
+    int mPage;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class ScrollSecActivity extends FragmentActivity {
         extrasInt = getIntent().getIntExtra("position", 0);
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        mPage = getIntent().getIntExtra("page", -1);
 
         actionBar.setTitle("wstecz");
         mUiButton = (Button) findViewById(R.id.sliding_button);
@@ -41,6 +43,7 @@ public class ScrollSecActivity extends FragmentActivity {
 
         mPager = (ViewPager) findViewById(R.id.sliding_pager);
         mPager.setAdapter(mAdapter);
+        mPager.setCurrentItem(mPage);
     }
 
     @Override

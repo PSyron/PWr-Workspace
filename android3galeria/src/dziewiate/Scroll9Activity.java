@@ -13,7 +13,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.example.android3galeria.R;
 
 import osme.MyGrid;
-import osme.ScrollSecActivity;
 
 public class Scroll9Activity extends Activity {
     MyGrid mUiFirstGrid;
@@ -53,7 +52,8 @@ public class Scroll9Activity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(view.getContext(), ScrollSecActivity.class);
+                Intent intent = new Intent(view.getContext(), ScrollSec9Activity.class);
+                intent.putExtra("page", position);
                 intent.putExtra("position", 1);
                 startActivity(intent);
 
@@ -77,7 +77,7 @@ public class Scroll9Activity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(view.getContext(), ScrollSecActivity.class);
+                Intent intent = new Intent(view.getContext(), ScrollSec9Activity.class);
                 intent.putExtra("position", 3);
                 startActivity(intent);
 

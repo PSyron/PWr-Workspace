@@ -51,6 +51,7 @@ public class ScrollActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(view.getContext(), ScrollSecActivity.class);
+                intent.putExtra("page", position);
                 intent.putExtra("position", 1);
                 startActivity(intent);
 
@@ -63,6 +64,7 @@ public class ScrollActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(view.getContext(), ScrollSecActivity.class);
+                intent.putExtra("page", position);
                 intent.putExtra("position", 2);
                 startActivity(intent);
 
@@ -75,6 +77,7 @@ public class ScrollActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(view.getContext(), ScrollSecActivity.class);
+                intent.putExtra("page", position);
                 intent.putExtra("position", 3);
                 startActivity(intent);
 

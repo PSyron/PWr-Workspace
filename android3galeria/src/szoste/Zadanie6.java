@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android3galeria.R;
@@ -16,6 +17,10 @@ import com.example.android3galeria.R;
 public class Zadanie6 extends Activity {
 
     TextView mUiButton;
+    ImageView mUiPierwsze;
+    ImageView mUiDrugie;
+    ImageView mUiTrzecie;
+    TextView mUiTytul;
 
     private SharedPreferences preferences;
     public static final String MY_PREFERENCES = "myPreferences";
@@ -29,8 +34,11 @@ public class Zadanie6 extends Activity {
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Zadanie 6 - Test");
+        mUiPierwsze = (ImageView) findViewById(R.id.pierwsze);
+        mUiDrugie = (ImageView) findViewById(R.id.drugie);
+        mUiTrzecie = (ImageView) findViewById(R.id.trzecie);
         mUiButton = (TextView) findViewById(R.id.button_szosty);
-
+        mUiTytul = (TextView) findViewById(R.id.tytul);
         mUiButton.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -46,10 +54,32 @@ public class Zadanie6 extends Activity {
     public void onResume() {
         super.onResume();
         int niemamPomysluNaNazwe = preferences.getInt("third", 0);
-        if (niemamPomysluNaNazwe == 0) {
+        boolean poAnalizie = preferences.getBoolean("poAnalizie", false);
+        if (niemamPomysluNaNazwe == 0 && !poAnalizie) {
             mUiButton.setText("Rozpocznij \nTEST");
-        } else {
+            mUiPierwsze.setImageResource(R.drawable.piate1);
+            mUiDrugie.setImageResource(R.drawable.piate2);
+            mUiTrzecie.setImageResource(R.drawable.piate3);
+            mUiTytul.setText("Super samochody \n TEST");
+        } else if (niemamPomysluNaNazwe != 0 && !poAnalizie) {
             mUiButton.setText("ROZPOCZNIJ \nANALIZĘ");
+
+            mUiTytul.setText("Super samochody \n TEST");
+            mUiPierwsze.setImageResource(R.drawable.piate1);
+            mUiDrugie.setImageResource(R.drawable.piate2);
+            mUiTrzecie.setImageResource(R.drawable.piate3);
+        } else if (niemamPomysluNaNazwe == 0 && poAnalizie) {
+            mUiTytul.setText("Muzyka \n TEST");
+            mUiButton.setText("Rozpocznij \n drugi TEST");
+            mUiPierwsze.setImageResource(R.drawable.ellie);
+            mUiDrugie.setImageResource(R.drawable.donatan);
+            mUiTrzecie.setImageResource(R.drawable.lp);
+        } else if (niemamPomysluNaNazwe != 0 && poAnalizie) {
+            mUiButton.setText("Rozpocznij \n druga ANALIZĘ");
+            mUiTytul.setText("Muzyka \n TEST");
+            mUiPierwsze.setImageResource(R.drawable.ellie);
+            mUiDrugie.setImageResource(R.drawable.donatan);
+            mUiTrzecie.setImageResource(R.drawable.lp);
         }
 
     }
