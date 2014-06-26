@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Black"
+    android:orientation="vertical"
+    android:padding="16dp" >
+
+    <ImageView
+        android:id="@+id/det_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/det_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/det_img"
+        android:layout_centerHorizontal="true"
+        android:text="CENA obrazka"
+        android:textColor="@color/Red"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/det_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/det_price"
+        android:layout_centerHorizontal="true"
+        android:text="TYTUŁ obrazka"
+        android:textColor="@color/White"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/det_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/det_title"
+        android:layout_centerHorizontal="true"
+        android:text="OPIS obrazka"
+        android:textColor="@color/White"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/det_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/det_desc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:text="Dodaj do koszyka"
+        android:textColor="@color/Yellow" >
+    </Button>
+
+    <Button
+        android:id="@+id/det_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/det_buy"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:text="Wróć do menu"
+        android:textColor="@color/Yellow" >
+    </Button>
+
+</RelativeLayout>

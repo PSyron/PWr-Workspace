@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Black"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp" >
+
+            <LinearLayout
+                android:id="@+id/shop_first_cat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/shop_first_Title"
+                    style="@style/Category"
+                    android:layout_width="match_parent"
+                    android:clickable="true"
+                    android:text="Ludzie"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/shop_first1"
+                    style="@style/Subcategory"
+                    android:text="Kobiety" />
+
+                <TextView
+                    android:id="@+id/shop_first2"
+                    style="@style/Subcategory"
+                    android:text="Mężczyźni" />
+
+                <TextView
+                    android:id="@+id/shop_first3"
+                    style="@style/Subcategory"
+                    android:text="Dzieci" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shop_second_cat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/shop_second_Title"
+                    style="@style/Category"
+                    android:layout_width="match_parent"
+                    android:text="Pojazdy"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/shop_second1"
+                    style="@style/Subcategory"
+                    android:text="Motory" />
+
+                <TextView
+                    android:id="@+id/shop_second2"
+                    style="@style/Subcategory"
+                    android:text="Samochody $$" />
+
+                <TextView
+                    android:id="@+id/shop_second3"
+                    style="@style/Subcategory"
+                    android:text="Samochody klasyczne" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shop_third_cat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/shop_third_Title"
+                    style="@style/Category"
+                    android:layout_width="match_parent"
+                    android:text="Krajobrazy"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/shop_third1"
+                    style="@style/Subcategory"
+                    android:text="Miasta" />
+
+                <TextView
+                    android:id="@+id/shop_third2"
+                    style="@style/Subcategory"
+                    android:text="Woda" />
+
+                <TextView
+                    android:id="@+id/shop_third3"
+                    style="@style/Subcategory"
+                    android:text="Natura" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shop_fourth_cat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/shop_fourth_Title"
+                    style="@style/Category"
+                    android:layout_width="match_parent"
+                    android:text="Zwierzęta"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/shop_fourth1"
+                    style="@style/Subcategory"
+                    android:text="Psy" />
+
+                <TextView
+                    android:id="@+id/shop_fourth2"
+                    style="@style/Subcategory"
+                    android:text="Koty" />
+
+                <TextView
+                    android:id="@+id/shop_fourth3"
+                    style="@style/Subcategory"
+                    android:text="Ptaki" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shop_fifth_cat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/shop_fifth_Title"
+                    style="@style/Category"
+                    android:layout_width="match_parent"
+                    android:text="Gry komputerowe"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/shop_fifth1"
+                    style="@style/Subcategory"
+                    android:text="Call of duty" />
+
+                <TextView
+                    android:id="@+id/shop_fifth2"
+                    style="@style/Subcategory"
+                    android:text="Angry Birds" />
+
+                <TextView
+                    android:id="@+id/shop_fifth3"
+                    style="@style/Subcategory"
+                    android:text="Age of Empires" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/shop_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:clickable="true"
+        android:paddingRight="24dp"
+        android:paddingTop="16dp"
+        android:text="0"
+        android:textColor="@color/Red"
+        android:textSize="26sp" />
+
+</RelativeLayout>
