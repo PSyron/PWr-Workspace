@@ -121,7 +121,7 @@ public class Main implements ActionListener {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 700, 803);
+		frame.setBounds(100, 100, 700, 699);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 		JMenuBar menuBar = new JMenuBar();
@@ -246,7 +246,7 @@ public class Main implements ActionListener {
 		frame.getContentPane().add(btnStart);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 329, 664, 403);
+		scrollPane.setBounds(10, 329, 664, 298);
 		frame.getContentPane().add(scrollPane);
 		
 		mtextArea = new JTextArea();
