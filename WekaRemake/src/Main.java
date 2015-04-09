@@ -5,7 +5,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javafx.collections.SetChangeListener;
 
@@ -19,6 +23,7 @@ import javax.swing.JPanel;
 
 import weka.associations.Apriori;
 import weka.associations.AssociationRule;
+import weka.associations.Item;
 import weka.core.*;
 import weka.filters.Filter;
 import weka.filters.supervised.attribute.Discretize;
@@ -116,7 +121,7 @@ public class Main implements ActionListener {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 550, 550);
+		frame.setBounds(100, 100, 700, 803);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 		JMenuBar menuBar = new JMenuBar();
@@ -127,21 +132,13 @@ public class Main implements ActionListener {
 		menuPlik.add(mOpenFile);
 		frame.getContentPane().setLayout(null);
 		
-		mlist = new CheckBoxList();
-		mlist.setToolTipText("Atrybuty");
-		mlist.setLocation(10, 36);
-		mlist.setForeground(Color.BLACK);
-		mlist.setBackground(Color.WHITE);
-		mlist.setSize(246, 248);
-		frame.getContentPane().add(mlist);
-		
 		mlabel = new JLabel("Wczytaj plik");
-		mlabel.setBounds(47, 11, 414, 14);
+		mlabel.setBounds(114, 11, 414, 14);
 		mlabel.setHorizontalAlignment(SwingConstants.CENTER);
 		frame.getContentPane().add(mlabel);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(266, 36, 258, 248);
+		panel.setBounds(358, 36, 316, 248);
 		frame.getContentPane().add(panel);
 		
 		JLabel lblNewLabel = new JLabel("Algorytm Apriori");
@@ -184,30 +181,30 @@ public class Main implements ActionListener {
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 								.addComponent(cbCar)
-								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(mpanel, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+								.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+									.addComponent(mpanel, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
 									.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)))
 							.addContainerGap())
-						.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+						.addGroup(gl_panel.createSequentialGroup()
 							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE)
 							.addGap(39))))
 		);
 		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap(22, Short.MAX_VALUE)
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(16, Short.MAX_VALUE)
 					.addComponent(lblNewLabel)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(cbCar)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addComponent(mpanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE))
 					.addGap(14))
 		);
 		panel_1.setLayout(null);
@@ -245,11 +242,11 @@ public class Main implements ActionListener {
 		
 		 btnStart = new JButton("Wyznacz regu\u0142y ");
 		btnStart.addActionListener(this);
-		btnStart.setBounds(97, 295, 159, 23);
+		btnStart.setBounds(130, 295, 159, 23);
 		frame.getContentPane().add(btnStart);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 329, 514, 150);
+		scrollPane.setBounds(10, 329, 664, 403);
 		frame.getContentPane().add(scrollPane);
 		
 		mtextArea = new JTextArea();
@@ -262,8 +259,18 @@ public class Main implements ActionListener {
 		
 		 btnBestRules = new JButton("Wyznacz najlepsze regu\u0142y");
 		btnBestRules.addActionListener(this);
-		btnBestRules.setBounds(266, 295, 169, 23);
+		btnBestRules.setBounds(359, 295, 169, 23);
 		frame.getContentPane().add(btnBestRules);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(10, 36, 279, 248);
+		frame.getContentPane().add(scrollPane_1);
+		
+		mlist = new CheckBoxList();
+		scrollPane_1.setViewportView(mlist);
+		mlist.setToolTipText("Atrybuty");
+		mlist.setForeground(Color.BLACK);
+		mlist.setBackground(Color.WHITE);
 		mOpenFile.addActionListener(this);
 	}
 	
@@ -320,22 +327,57 @@ public class Main implements ActionListener {
 	}
 	
 	public void getBestRules(){
-		Apriori associator = new Apriori();
-		associator.setCar(true);
-		associator.setDelta(Double.parseDouble(mtfDelta.getText()));
-		associator.setLowerBoundMinSupport(0.15);
-		associator.setUpperBoundMinSupport(1.0);
-		associator.setNumRules(50);
-		associator.setMinMetric(1.0);
+		Discretize disc = new Discretize();
+		String[] discOptions = new String[2];
 		
+		discOptions[0] = "-R";
+		discOptions[1] = "first-last";
+		Instances tempInstance = null;
 		try {
-			associator.buildAssociations(readedInstances);
-		} catch (Exception e) {
+			disc.setOptions(discOptions);
+			disc.setInputFormat(readedInstances);
+			tempInstance = Filter.useFilter(readedInstances, disc);
+		} catch (Exception e1) {
 			// TODO Auto-generated catch block
-			mtextArea.setText(e.getMessage());
+			e1.printStackTrace();
 		}
+		Instances currentInstances = new Instances(tempInstance);
+		int a = 0;
+		for (int i = 0; i < tempInstance.numAttributes(); i++) {
+			if (!((Boolean) mlist.getChecked(i))) {
+				currentInstances.deleteAttributeAt(i - a);
+				a++;
+			}
+		}
+		Map<String, String> base = new HashMap<String, String>();
 		
+		Apriori associator = new Apriori();
+		associator.setCar(false);
+		associator.setDelta(0.05);
+		associator.setLowerBoundMinSupport(0.1);
+		associator.setUpperBoundMinSupport(0.9);
+		associator.setNumRules(100);
+		associator.setMinMetric(0.9);
+		try {
+			
+			associator.buildAssociations(currentInstances);
+		} catch (Exception e) {
+			mtextArea.setText(e.getMessage());
+		e.printStackTrace();
+		}
 		mtextArea.setText("");
+	
+		for( AssociationRule rule : associator.getAssociationRules().getRules()){
+			if(!base.containsKey(rule.getConsequence().toString())){
+				base.put(rule.getConsequence().toString(), rule.getPremise().toString());
+			}
+		}
+		Iterator iterator = base.keySet().iterator();
+		while(iterator.hasNext()){
+			String key = iterator.next().toString();
+			mtextArea.append(base.get(key)+ " => " +key +"\n");
+			
+		}
 	}
 
 	@Override
@@ -347,8 +389,11 @@ public class Main implements ActionListener {
 		}else if(comingFrom == btnStart){
 			if(readedInstances != null)
 				getRulesFromApriori();
+			else{mtextArea.setText("Nie wybrano pliku wejœcia!!"); }
 		}else if(comingFrom == btnBestRules){
-			
+			if(readedInstances != null)
+				getBestRules();
+			else{mtextArea.setText("Nie wybrano pliku wejœcia!!"); }
 		}
 		
 	}
